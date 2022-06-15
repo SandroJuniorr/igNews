@@ -43,10 +43,10 @@ export const getServerSideProps: GetServerSideProps = async ({req, params}) => {
     const session = await getSession({req})
     const {slug} = params
 
-    if(!session.activeSubscription){
+    if(!session?.activeSubscription){
         return{
             redirect: {
-                destination: '/',
+                destination: `/posts/${slug}`,
                 permanent: false,
             }
         }
@@ -67,6 +67,7 @@ export const getServerSideProps: GetServerSideProps = async ({req, params}) => {
                 year:'numeric'
             })
     }
+
 
 
     return {
